@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparando tu Hogar - Servicios de Limpieza</title>
+    <link rel="icon" type="image/png" href="logo.png.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ESTILOS GENERALES */
+        body {
+            background-color: #001f3f;
+            font-family: Verdana, Helvetica, sans-serif;
+            color: #ffffff;
+            /* Usando un patrón de fondo repetido */
+            background-image: url('Captura de pantalla (3).png');
+            background-repeat: repeat;
+            background-size: 200px auto; /* Ajusta el tamaño si es necesario */
+            background-position: top center;
+            scroll-behavior: smooth;
+        }
+
+        /* HEADER */
+        .header-section {
+            background-color: rgba(0, 51, 102, 0.7); /* Ligeramente más opaco */
+            padding: 70px 20px;
+            text-align: center;
+            text-shadow: 1px 1px 3px #000000;
+            position: relative; /* Necesario para efectos parallax si se desean */
+            /* Opcionalmente, agrega una capa sutil si la imagen de fondo distrae */
+            /* &::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.2); z-index: -1; } */
+        }
+
+        .header-section img {
+            animation: fadeInUp 1.2s ease forwards;
+            opacity: 0;
+            transform: translateY(-20px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 4px solid #ffffff;
+            max-width: 150px;
+            height: auto;
+            /* Asegura que la imagen escale responsivamente */
+            display: inline-block; /* Para aplicar transform correctamente */
+        }
+
+        .header-section h1,
+        .header-section p {
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .header-section p {
+            animation-delay: 0.3s;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .header-section p:hover {
+            color: rgba(0, 0, 0, 0.8); /* Efecto al pasar el ratón */
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background-color: #003366;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+         .navbar-nav .nav-link {
+            color: #ffffff; /* Enlaces blancos */
+            transition: color 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #00cfff; /* Color de resalte al pasar el ratón */
+        }
+
+        /* SECTIONS - Agregar relleno para mejor espaciado */
+        section {
+            padding: 60px 0; /* Agregar relleno vertical a las secciones */
+        }
+        h2 {
+             color: #ffffff; /* Asegura que los títulos de sección sean blancos */
+             text-shadow: 1px 1px 3px #000000;
+        }
+
+        /* SERVICIOS */
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.95); /* Ligeramente menos transparente */
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            margin: 15px auto;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 90%; /* Permite que las tarjetas ocupen más ancho en pantallas pequeñas */
+            color: #003366; /* Color del texto de la tarjeta */
+        }
+
+        @media (min-width: 768px) {
+            .service-card {
+                max-width: 350px; /* Restringe el ancho en pantallas grandes */
+            }
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 200px; /* Altura fija para consistencia */
+            object-fit: cover; /* Cubre el área sin distorsión */
+        }
+
+        .card-title {
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #003366; /* Color del título */
+            font-size: 1.3rem; /* Título ligeramente más grande */
+        }
+
+        .card-text {
+            color: #333333; /* Texto más oscuro para legibilidad */
+            text-align: center;
+            font-size: 1rem; /* Texto ligeramente más grande */
+            padding: 0 15px; /* Agrega relleno dentro del texto de la tarjeta */
+        }
+
+        .card-body .btn {
+            font-size: 0.9rem; /* Botón ligeramente más grande */
+            padding: 10px 15px;
+            width: 100%; /* Hace que el botón ocupe todo el ancho en tarjetas pequeñas */
+            margin-top: 15px; /* Agrega espacio encima del botón */
+        }
+        .card-body .btn-primary {
+             background-color: #00cfff;
+             border-color: #00cfff;
+             color: #003366;
+             font-weight: bold;
+             transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+         .card-body .btn-primary:hover {
+             background-color: #002244;
+             border-color: #002244;
+             color: #ffffff;
+         }
+
+        /* CONTACTO */
+        .contact-form {
+            background-color: rgba(255, 255, 255, 0.95); /* Ligeramente menos transparente */
+            padding: 30px; /* Más relleno */
+            border-radius: 15px;
+            margin-top: 20px;
+            color: #003366;
+            max-width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Agrega sombra */
+        }
+
+        @media (min-width: 768px) {
+            .contact-form {
+                max-width: 600px;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 20px; /* Más espacio entre grupos de formulario */
+        }
+
+        label {
+            font-size: 1rem; /* Etiqueta ligeramente más grande */
+            margin-bottom: 5px; /* Espacio debajo de la etiqueta */
+            display: block; /* Asegura que la etiqueta esté en su propia línea */
+            font-weight: bold;
+        }
+
+        .form-control {
+            font-size: 1rem; /* Tamaño de fuente consistente */
+            padding: 10px 15px; /* Más relleno en los campos de entrada */
+        }
+
+         .contact-form .presupuesto-btn {
+            width: 100%; /* Botón de ancho completo */
+            margin-top: 10px; /* Espacio encima del botón */
+        }
+
+         #form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            color: #003366; /* Color por defecto */
+        }
+        #form-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+         #form-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+
+        /* FOOTER */
+        footer {
+            background-color: #003366;
+            padding: 20px; /* Más relleno */
+            color: #ffffff;
+            font-weight: bold;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 0.9rem; /* Fuente ligeramente más grande */
+            margin-top: 40px; /* Espacio encima del pie de página */
+        }
+
+        footer a {
+            color: #00cfff; /* Color del enlace en el pie de página */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+         footer a:hover {
+            color: #ffffff;
+         }
+
+        .presupuesto-btn {
+            background-color: #00cfff;
+            color: #003366;
+            font-weight: bold;
+            border-radius: 25px;
+            padding: 12px 25px; /* Más relleno */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1.1rem; /* Fuente ligeramente más grande */
+            border: none; /* Elimina el borde por defecto del botón */
+            text-decoration: none; /* Elimina el subrayado de los enlaces */
+            display: inline-block; /* Permite relleno y transformación */
+        }
+
+        .presupuesto-btn:hover {
+            background-color: #002244;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        /* BOTONES REDES SOCIALES */
+        .social-bar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px; /* Botones ligeramente más grandes */
+            height: 50px; /* Botones ligeramente más grandes */
+            margin-bottom: 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+            opacity: 0.9;
+        }
+
+        .social-btn:hover {
+            transform: scale(1.1);
+            opacity: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+        }
+
+        .instagram-btn {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .facebook-btn {
+            background-color: #1877f2; /* Azul moderno de Facebook */
+        }
+
+        .social-btn i { /* Usando iconos de Font Awesome */
+            font-size: 26px; /* Iconos ligeramente más grandes */
+        }
+
+        /* AJUSTES RESPONSIVOS - Ajuste fino */
+        @media (max-width: 767.98px) { /* Ajusta el breakpoint para mejor manejo móvil */
+             .header-section {
+                 padding: 50px 15px;
+             }
+
+             .header-section h1 {
+                 font-size: 1.8rem;
+             }
+
+             .header-section p {
+                 font-size: 0.9rem;
+             }
+
+             .navbar-brand {
+                 font-size: 1.3rem;
+             }
+
+             .navbar-toggler {
+                 padding: .25rem .5rem; /* Ajusta el tamaño del toggler */
+                 font-size: 1.25rem;
+             }
+
+             .service-card {
+                 max-width: 90%; /* Asegura que las tarjetas no se vuelvan demasiado anchas en pantallas pequeñas */
+                 margin-bottom: 30px; /* Más espacio entre tarjetas apiladas */
+             }
+             .card-img-top {
+                height: 180px; /* Imagen ligeramente más corta en pantallas pequeñas */
+             }
+             .card-title {
+                 font-size: 1.2rem;
+             }
+             .card-text {
+                 font-size: 0.9rem;
+             }
+             .card-body .btn {
+                 font-size: 0.85rem;
+                 padding: 8px 12px;
+             }
+
+             .contact-form {
+                 padding: 20px;
+                 max-width: 95%;
+             }
+
+             label {
+                 font-size: 0.95rem;
+             }
+             .form-control {
+                 font-size: 0.95rem;
+             }
+             .contact-form .presupuesto-btn {
+                 font-size: 1rem;
+             }
+
+             footer {
+                 padding: 15px;
+                 font-size: 0.8rem;
+             }
+             footer .presupuesto-btn {
+                 font-size: 0.9rem;
+                 padding: 10px 20px;
+             }
+
+             .social-bar {
+                 bottom: 15px;
+                 right: 15px;
+             }
+
+             .social-btn {
+                 width: 45px; /* Ajusta el tamaño */
+                 height: 45px; /* Ajusta el tamaño */
+                 margin-bottom: 8px;
+             }
+
+             .social-btn i {
+                 font-size: 22px; /* Ajusta el tamaño del icono */
+             }
+         }
+
+         /* Ya tienes queries para tamaños más grandes, asegúrate de que sean consistentes */
+         @media (min-width: 992px) {
+             .navbar-brand {
+                 font-size: 1.8rem;
+             }
+         }
+         /* Puedes agregar estilos específicos para pantallas extra grandes si es necesario, pero la cuadrícula de Bootstrap generalmente maneja esto bien */
+         /*
+         @media (min-width: 1200px) {
+              Agregar estilos XL aquí
+         }
+         */
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">PREPARANDO TU HOGAR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="nosotros" class="header-section">
+        <img src="logo.png.png" alt="Logo central" class="mb-3 rounded-circle">
+        <h1>PREPARANDO TU HOGAR</h1>
+        <p>SERVICIOS DE LIMPIEZA</p>
+    </section>
+
+    <section id="servicios" class="container my-5">
+        <h2 class="text-center mb-5">Nuestros Servicios</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4 mb-4 d-flex"> <div class="card service-card flex-fill"> <img src="parte1.png.png" class="card-img-top" alt="Terminación de Obra">
+                    <div class="card-body d-flex flex-column"> <h5 class="card-title">🏗️ Terminación de Obra</h5>
+                        <p class="card-text flex-grow-1">Removemos residuos y suciedad para dejar tu propiedad lista y reluciente después de una construcción o remodelación.</p>
+                        <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4 d-flex">
+                <div class="card service-card flex-fill">
+                    <img src="parte2.png.png" class="card-img-top" alt="Pre Mudanzas">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">📦 Pre Mudanzas</h5>
+                        <p class="card-text flex-grow-1">Preparamos tu nuevo hogar para que te mudes sin preocupaciones, garantizando limpieza profunda y confort.</p>
+                        <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4 d-flex">
+                <div class="card service-card flex-fill">
+                    <img src="parte3.png.png" class="card-img-top" alt="Limpieza Profunda">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">🧹 Limpieza Profunda</h5>
+                        <p class="card-text flex-grow-1">Limpieza exhaustiva de espacios domésticos o comerciales, utilizando productos especializados y atención detallada.</p>
+                        <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="container my-5">
+        <h2 class="text-center mb-4">Contáctanos</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="contact-form">
+                    <form id="contactForm" action="https://formspree.io/f/xvgaoznn" method="POST">
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje:</label>
+                            <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+                        </div>
+                         <input type="hidden" name="_subject" value="Nuevo mensaje de contacto desde la web">
+
+                        <button type="submit" class="btn btn-primary presupuesto-btn">Enviar Mensaje</button>
+                    </form>
+                    <div id="form-message" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        Contacto: 📞 3364666718 | 📧 Limpieza360@gmail.com
+        <div class="text-center mt-3">
+            <a class="btn presupuesto-btn btn-lg" href="tel:3364666718">📲 Pedí tu presupuesto al 3364666718</a>
+        </div>
+         <p class="mt-3 mb-0">&copy; 2025 Preparando tu Hogar. Todos los derechos reservados.</p>
+    </footer>
+
+    <div class="social-bar">
+        <a href="https://wa.me/543364666718" class="social-btn whatsapp-btn" target="_blank" aria-label="Contactar por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/preparando_tu_hogar?igsh=MW1lNW8zdTc2MTI0Zg==" class="social-btn instagram-btn"
+            target="_blank" aria-label="Visitar nuestro Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/share/15yqzpeoBY/" class="social-btn facebook-btn" target="_blank" aria-label="Visitar nuestro Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const formMessage = document.getElementById('form-message'); // Elemento para mostrar mensajes
+
+        // Reemplaza 'TU_ENDPOINT_DE_FORMSPREE_AQUÍ' con el endpoint que obtengas de Formspree
+        const formspreeEndpoint = 'https://formspree.io/f/xvgaoznn'; // <-- ¡IMPORTANTE! Reemplaza esto
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Previene la recarga de la página
+
+            const formData = new FormData(form);
+
+            try {
+                // Envía los datos a Formspree
+                const response = await fetch(formspreeEndpoint, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json' // Importante para recibir una respuesta JSON
+                    }
+                });
+
+                const result = await response.json(); // Parsear la respuesta JSON
+
+                if (response.ok) {
+                    // Éxito
+                    formMessage.textContent = '¡Gracias! Tu mensaje ha sido enviado.';
+                    formMessage.className = 'mt-3 success'; // Clase para estilos de éxito
+                    form.reset(); // Limpia el formulario
+                } else {
+                    // Error (puede ser un error de validación de Formspree o de otro tipo)
+                    console.error('Error al enviar el formulario:', result);
+                    let errorMessage = 'Hubo un problema al enviar tu mensaje.';
+                    if (result.errors && result.errors.length > 0) {
+                        // Muestra el primer error específico si está disponible
+                        errorMessage = `Error: ${result.errors[0].message}`;
+                    } else if (result.error) {
+                         errorMessage = `Error: ${result.error}`;
+                    }
+                    formMessage.textContent = errorMessage;
+                    formMessage.className = 'mt-3 error'; // Clase para estilos de error
+                }
+            } catch (error) {
+                // Error de red o inesperado
+                console.error('Error al enviar el formulario:', error);
+                formMessage.textContent = 'Hubo un problema de conexión al enviar tu mensaje. Inténtalo de nuevo.';
+                formMessage.className = 'mt-3 error'; // Clase para estilos de error
+            }
+        });
+    </script>
+</body>
+</html>
