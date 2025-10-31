@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpieza de Comercios y Oficinas | Preparando tu Hogar</title>
+    <link rel="icon" type="image/png" href="logo.png.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar container">
+            <a href="index.html" class="logo"><img src="logo.png.png" alt="Logo" class="logo-icon">PREPARANDO TU HOGAR</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                <li class="nav-item"><a href="index.html#services" class="nav-link">Nuestros Servicios</a></li>
+                <li class="nav-item"><a href="index.html#why-us" class="nav-link">¿Por Qué Elegirnos?</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contacto</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-primary">Contáctanos</a>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="service-detail">
+            <div class="container">
+                <h2>Limpieza de Comercios y Oficinas</h2>
+                <p>Un espacio de trabajo limpio y ordenado es clave para la productividad y para dar una excelente imagen a tus clientes. Ofrecemos un servicio de limpieza integral y continuo para todo tipo de locales comerciales y oficinas, adaptado a tus horarios para no interferir con tu actividad.</p>
+                <p>Nos encargamos de mantener tus instalaciones en perfectas condiciones, creando un ambiente profesional y agradable tanto para tus empleados como para tus visitantes.</p>
+                <h3>Qué Incluye Nuestro Servicio para Empresas</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i>Limpieza de áreas comunes y puestos de trabajo.</li>
+                    <li><i class="fas fa-check-circle"></i>Mantenimiento de limpieza en baños y zonas de descanso.</li>
+                    <li><i class="fas fa-check-circle"></i>Limpieza de pisos, alfombras y superficies.</li>
+                    <li><i class="fas fa-check-circle"></i>Aseo de vidrios, mamparas y divisiones.</li>
+                    <li><i class="fas fa-check-circle"></i>Gestión de residuos y vaciado de papeleras.</li>
+                    <li><i class="fas fa-check-circle"></i>Desinfección de áreas de alto contacto.</li>
+                </ul>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="index.html#contact" class="btn btn-secondary">Pedir Presupuesto</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <h2>Contactanos y pedí tu presupuesto sin cargo</h2>
+            <p><strong>¡Respondemos en el día!</strong></p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="icon"><i class="fas fa-phone"></i></div>
+                    <a href="tel:3364666718">336 466-6718</a>
+                </div>
+                <div class="contact-item">
+                     <div class="icon"><i class="fas fa-envelope"></i></div>
+                     <a href="mailto:limpiando360@gmail.com">limpiando360@gmail.com</a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Preparando tu Hogar. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <div class="social-bar">
+        <a href="https://wa.me/543364666718" class="social-btn whatsapp-btn" target="_blank" aria-label="Contactar por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/preparando_tu_hogar?igsh=MW1lNW8zdTc2MTI0Zg==" class="social-btn instagram-btn" target="_blank" aria-label="Visitar nuestro Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/share/15yqzpeoBY/" class="social-btn facebook-btn" target="_blank" aria-label="Visitar nuestro Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+        document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+    </script>
+</body>
+</html>

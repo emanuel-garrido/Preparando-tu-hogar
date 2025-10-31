@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpieza Residencial | Preparando tu Hogar</title>
+    <link rel="icon" type="image/png" href="logo.png.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar container">
+            <a href="index.html" class="logo"><img src="logo.png.png" alt="Logo" class="logo-icon">PREPARANDO TU HOGAR</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                <li class="nav-item"><a href="index.html#services" class="nav-link">Nuestros Servicios</a></li>
+                <li class="nav-item"><a href="index.html#why-us" class="nav-link">¿Por Qué Elegirnos?</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contacto</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-primary">Contáctanos</a>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="service-detail">
+            <div class="container">
+                <h2>Limpieza Residencial</h2>
+                <p>Ofrecemos un servicio de limpieza residencial profundo y detallado para mantener tu hogar impecable. Nos adaptamos a tus necesidades, ya sea para departamentos, casas o consorcios, con planes de limpieza únicos, semanales, quincenales o mensuales.</p>
+                <p>Nuestro objetivo es crear un ambiente saludable y agradable para ti y tu familia, cuidando cada detalle y utilizando productos de alta calidad que son seguros para todos.</p>
+                <h3>Qué Incluye Nuestro Servicio Residencial</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i>Limpieza de polvo en muebles y superficies.</li>
+                    <li><i class="fas fa-check-circle"></i>Aspirado y limpieza de pisos y alfombras.</li>
+                    <li><i class="fas fa-check-circle"></i>Limpieza completa de cocinas y baños.</li>
+                    <li><i class="fas fa-check-circle"></i>Limpieza de espejos y vidrios interiores.</li>
+                    <li><i class="fas fa-check-circle"></i>Vaciado de papeleras y cestos de basura.</li>
+                    <li><i class="fas fa-check-circle"></i>Organización general de los ambientes.</li>
+                </ul>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="index.html#contact" class="btn btn-secondary">Pedir Presupuesto</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <h2>Contactanos y pedí tu presupuesto sin cargo</h2>
+            <p><strong>¡Respondemos en el día!</strong></p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="icon"><i class="fas fa-phone"></i></div>
+                    <a href="tel:3364666718">336 466-6718</a>
+                </div>
+                <div class="contact-item">
+                     <div class="icon"><i class="fas fa-envelope"></i></div>
+                     <a href="mailto:limpiando360@gmail.com">limpiando360@gmail.com</a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Preparando tu Hogar. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <div class="social-bar">
+        <a href="https://wa.me/543364666718" class="social-btn whatsapp-btn" target="_blank" aria-label="Contactar por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/preparando_tu_hogar?igsh=MW1lNW8zdTc2MTI0Zg==" class="social-btn instagram-btn" target="_blank" aria-label="Visitar nuestro Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/share/15yqzpeoBY/" class="social-btn facebook-btn" target="_blank" aria-label="Visitar nuestro Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+        document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+    </script>
+</body>
+</html>
